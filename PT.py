@@ -112,5 +112,10 @@ class ProfileTools():
             curves = sketch.findConnectedCurves(kerf.curve)
             sketch.offset(curves, kerf.point, kerf.offset)
 
+            if deleteProfiles:
+                for i in range(curves.count):
+                    curves.item(i).deleteMe()
+
+
     
         

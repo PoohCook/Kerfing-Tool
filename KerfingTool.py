@@ -18,12 +18,12 @@ class MyCommandExecutePreviewHandler(adsk.core.CommandEventHandler):
         try:
             cmdArgs = adsk.core.CommandEventArgs.cast(args)
             inputs = cmdArgs.command.commandInputs
+            kerf_width = inputs.itemById("kerf_width").value
             selector = inputs.itemById("profile_select")
             if selector.selectionCount > 0:
                 selectedProfile = adsk.fusion.Profile.cast(selector.selection(0).entity)
 
                 profileTools = PT.ProfileTools()
-                kerf_width = inputs.itemById("kerf_width").value
                 profileTools.offsetProfiles(selectedProfile, kerf_width)
 
         except:
@@ -40,12 +40,12 @@ class MyCommandExecuteHandler(adsk.core.CommandEventHandler):
         try:
             cmdArgs = adsk.core.CommandEventArgs.cast(args)
             inputs = cmdArgs.command.commandInputs
+            kerf_width = inputs.itemById("kerf_width").value
             selector = inputs.itemById("profile_select")
             selectedProfile = adsk.fusion.Profile.cast(selector.selection(0).entity)
 
             profileTools = PT.ProfileTools()
-            kerf_width = inputs.itemById("kerf_width").value
-            profileTools.offsetProfiles(selectedProfile, kerf_width)
+            profileTools.offsetProfiles(selectedProfile, kerf_width, deleteProfiles=True)
 
         except:
             _ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
