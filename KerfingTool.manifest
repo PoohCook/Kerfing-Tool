@@ -1,0 +1,10 @@
+{
+	"autodeskProduct":	"Fusion360",
+	"type":	"script",
+	"author":	"Pooh",
+	"description":	{
+		"":	"Apply a kerf to a selected profile for laser cutting"
+	},
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true
+}
