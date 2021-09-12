@@ -116,6 +116,6 @@ class ProfileTools():
                 for i in range(curves.count):
                     curves.item(i).deleteMe()
 
-
+            curves.clear()
     
         
